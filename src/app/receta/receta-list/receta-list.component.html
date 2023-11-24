@@ -1,0 +1,34 @@
+<div *ngIf="selected">
+  <app-receta-detalle [recetaDetail]="selectedReceta"></app-receta-detalle>
+</div>
+<div class="container-fluid p-2">
+  <div class="row">
+    <div class="col-fluid mb-4 align-center">
+      <div class="card d-flex justify-content-center">
+        <p>
+          ** La calificación promedio es de {{ promedio  }} con un registro de {{totalOpiniones}} opiniones
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-4" *ngFor="let r of recetas">
+          <div class="card p-2 mx-auto" >
+            <h2 class="card-title">{{ r.nombre }}</h2>
+              <img
+                class="card-img-top"
+                src="{{ r.imagen }}"
+                alt="{{ r.nombre }}"
+                (click)="onSelected(r)"
+              />
+              <div class="card-body">
+                  <p class="card-text">Clasificación: {{r.estrellas}} de {{r.cantidadOpiniones}}</p>
+                  <p class="card-text">Duración: {{r.duracion}} | Dificultad: {{r.dificultad}} minutos</p>
+                  <p class="card-text">Por: {{r.autorReceta}}</p>
+              </div>
+           </div>
+      </div>
+   </div>
+</div>
